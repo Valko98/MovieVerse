@@ -16,8 +16,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity (not recommended for production)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Admin-only routes
-                        .requestMatchers("/user/**").hasRole("USER")   // User-only routes
+                        .requestMatchers("/admin/**").hasRole("ADMIN") //admin only routes
+                        .requestMatchers("/moderator/**").hasRole("MODERATOR") //moderator only routes
+                        .requestMatchers("/user/**").hasRole("USER") // user only routes
+
                         .anyRequest().permitAll()                     // Public access
                 )
                 .formLogin(form -> form

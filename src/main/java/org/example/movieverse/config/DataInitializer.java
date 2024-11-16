@@ -19,9 +19,9 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userService.saveRole(new Role("ROLE_ADMIN"));
-        userService.saveRole(new Role("ROLE_MODERATOR"));
-        userService.saveRole(new Role("ROLE_USER"));
+        userService.saveRole(new Role("ADMIN"));
+        userService.saveRole(new Role("MODERATOR"));
+        userService.saveRole(new Role("USER"));
 
 
         User admin = new User("admin", "admin@example.com", passwordEncoder.encode("admin123"));
@@ -33,9 +33,9 @@ public class DataInitializer implements CommandLineRunner {
         userService.saveUser(moderator);
         userService.saveUser(user);
 
-        userService.addRoleToUser("admin", "ROLE_ADMIN");
-        userService.addRoleToUser("moderator", "ROLE_MODERATOR");
-        userService.addRoleToUser("user", "ROLE_USER");
+        userService.addRoleToUser("admin", "ADMIN");
+        userService.addRoleToUser("moderator", "MODERATOR");
+        userService.addRoleToUser("user", "USER");
 
         System.out.println("Users and roles are initialized.");
     }
