@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<h1>Register</h1>
+<form th:action="@{/auth/register}" th:object="${user}" method="post">
+    <div>
+        <input type="text" th:field="*{username}" placeholder="Username">
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username is required</div>
+    </div>
+    <div>
+        <input type="email" th:field="*{email}" placeholder="Email">
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email is required</div>
+    </div>
+    <div>
+        <input type="password" th:field="*{password}" placeholder="Password">
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password is required</div>
+    </div>
+    <div>
+        <input type="password" th:field="*{confirmPassword}" placeholder="Confirm Password">
+        <div th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">password is required</div>
+    </div>
+    <button type="submit">Register</button>
+</form>
+
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
