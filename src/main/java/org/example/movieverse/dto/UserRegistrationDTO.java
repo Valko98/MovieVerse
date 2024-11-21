@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -15,20 +15,20 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class UserRegistrationDTO {
 
-    @NotBlank(message = "Username is required")
+    @NotBlank(message = "{username}")
     @Size(min = 4, max = 20,
-            message = "username must be between 4 and 20 characters.")
+            message = "{username}")
     private String username;
 
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
+    @NotBlank(message = "{email}")
+    @Email(message = "{email}")
     private String email;
 
-    @NotBlank(message = "Password is required")
-    @Size(min = 6, message = "Password must be at least 6 characters")
+    @NotBlank(message = "{password}")
+    @Size(min = 6, message = "{password}")
     private String password;
 
-    @NotBlank(message = "Confirm Password is required")
+    @NotBlank(message = "{confirmPassword}")
     private String confirmPassword;
 
     // Password matching validation
