@@ -24,9 +24,8 @@ public class AuthController {
         this.userService = userService;
 
     }
-
     @GetMapping("/register")
-    public String getRegister(Model model) {
+    public String register(Model model) {
         model.addAttribute("user", new UserRegistrationDTO());
 
         return "auth/register";
@@ -46,8 +45,9 @@ public class AuthController {
         return "redirect:/auth/login";
     }
 
+
     @GetMapping("/login")
-    public String getLogin() {
+    public String login() {
 
         return "auth/login";
     }

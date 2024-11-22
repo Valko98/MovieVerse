@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,24 @@
 </head>
 <body>
 <header>
+    <div class="navbar-container">
     <nav>
-        <a href="/" th:href="@{/}">Home</a>
-        <a href="/auth/login" th:href="@{/auth/login}">Login</a>
-        <a href="/auth/register" th:href="@{/auth/register}">Register</a>
+        <ul>
+            <li sec:authorize="isAnonymous()" class="nav-link">
+                <a  href="/auth/register" th:href="@{/auth/register}">Sign up now</a>
+            </li>
+            <li sec:authorize="isAnonymous()">
+                <a href="/auth/login"  th:href="@{/auth/login}">Sign in</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/logout}">Logout</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a href="/home"  th:href="@{/home}"></a>
+            </li>
+
+        </ul>
+
     </nav>
+    </div>
 </header>

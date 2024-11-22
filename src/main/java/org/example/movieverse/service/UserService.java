@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -39,9 +38,8 @@ public class UserService {
     public void addRoleToUser(String username, String name) {
             User user = userRepository.findByUsername(username);
             Role role = roleRepository.findByName(name);
-                if (user != null && role != null) {
-                    user.getRoles().add(role);
-        }
+
+            user.getRoles().add(role);
     }
     public User getUser(String username) {
         return userRepository.findByUsername(username);

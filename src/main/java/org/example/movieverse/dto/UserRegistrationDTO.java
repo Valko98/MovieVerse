@@ -15,20 +15,20 @@ import jakarta.validation.constraints.Size;
 @AllArgsConstructor
 public class UserRegistrationDTO {
 
-    @NotBlank(message = "{username}")
+    @NotBlank(message = "username is required")
     @Size(min = 4, max = 20,
-            message = "{username}")
+            message = "username must be between 4 and 20 characters")
     private String username;
 
-    @NotBlank(message = "{email}")
-    @Email(message = "{email}")
+    @NotBlank(message = "email is required")
+    @Email(message = "email is invalid!")
     private String email;
 
-    @NotBlank(message = "{password}")
-    @Size(min = 6, message = "{password}")
+    @NotBlank(message = "password is required")
+    @Size(min = 6, message = "password should be at least 6 characters")
     private String password;
 
-    @NotBlank(message = "{confirmPassword}")
+    @NotBlank(message = "password is required")
     private String confirmPassword;
 
     // Password matching validation
